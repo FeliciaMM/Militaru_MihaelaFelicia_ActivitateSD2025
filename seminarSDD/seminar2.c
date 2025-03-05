@@ -66,14 +66,32 @@ void dezalocare(struct Masina** vector, int* nrElemente) {
 	*nrElemente = 0;
 }
 
+//folosim char ca sa economisim memorie, putem stoca mai putin de  de elemente/ unsigned char ajunge la 
+void copiazamasinicuCCMare(struct Masina* vector, char nrElemente, float prag, struct Masina** vectorNou, int* dimensiune) {
+	*dimensiune = 0;
+	for (char i = 0; i < nrElemente; i++) {
+		if (prag < vector[i].capacitate_C) {
+			(*dimensiune)++;
 
-void copiazaAnumiteElemente(struct Masina* vector, char nrElemente, float prag, struct Masina** vectorNou, int* dimensiune) {
-	//parametrul prag poate fi modificat in functie de 
-	// tipul atributului ales pentru a indeplini o conditie
-	//este creat un nou vector cu elementele care indeplinesc acea conditie
+		}
+	}
+	if (*dimensiune > 0) {
+		*vectorNou = (struct Masina*)malloc(*dimensiune * sizeof(struct Masina));
+		for (int j = 0; j < nrElemente; j++) {
+			if (prag < vector[i].capacitate_C)
+			{
+				(*vectorNou)[j] = vector[i];
+				*vectorNou[j].marca = malloc(sizeof(char) * (strlen(vector[i].marca) + 1));
+				strcpy((*vectorNou)[j].marca, vector[i].marca);
+				j++;
+
+			}
+		}
+	}
+
 }
 
-struct Masina getPrimulElementConditionat(struct Masina* vector, int nrElemente, const char* conditie) {
+struct Masina getPrimaMasinaDupaMarca(struct Masina* vector, int nrElemente, const char* conditie) {
 	//trebuie cautat elementul care indeplineste o conditie
 	//dupa atributul de tip char*. Acesta este returnat.
 	struct Masina s;
@@ -98,5 +116,6 @@ int main() {
 	vectorMasiniCopiate = copiazaPrimeleNElemente(vector, nrElem, nrElemCop);
 	afisareVector(vectorMasiniCopiate, nrElem);
 	dezalocare(vectorMasiniCopiate, &nrElemCop);
+	
 	return 0;
 }
