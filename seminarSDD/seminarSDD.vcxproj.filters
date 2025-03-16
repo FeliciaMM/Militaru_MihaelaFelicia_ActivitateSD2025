@@ -16,19 +16,22 @@
     <Filter Include="Source Files\Task-uri suplimentare">
       <UniqueIdentifier>{275bf9c5-6cf4-413d-bc8c-abb7109e328d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Seminare">
+      <UniqueIdentifier>{2ff0becc-443b-4492-898d-ddec5a15d107}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="seminar2.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Seminar3.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Task suplimentar1.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
     <ClCompile Include="Task suplimentar4.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
+    </ClCompile>
+    <ClCompile Include="seminar2.c">
+      <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
+    <ClCompile Include="Seminar3.c">
+      <Filter>Source Files\Seminare</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
