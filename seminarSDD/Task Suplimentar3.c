@@ -77,6 +77,7 @@ Film citireFilm(FILE* file) {
     f.durata = atof(aux);
 
     aux = strtok(NULL, sep);
+
     f.nrRecenzii = atoi(aux);
 
     
@@ -87,10 +88,6 @@ Film citireFilm(FILE* file) {
         if (f.note) {
             for (int i = 0; i < f.nrRecenzii; i++) {
                 aux = strtok(NULL, sep);
-                if (!aux) {
-                    f.nrRecenzii = i; 
-                    break;
-                }
                 f.note[i] = atof(aux);
             }
         }
@@ -98,6 +95,7 @@ Film citireFilm(FILE* file) {
 
     return f;
 }
+
 
 Film* citireVectorFilme(const char* numeFisier, int* nrFilmeCitite) {
     FILE* file = fopen(numeFisier, "r");
