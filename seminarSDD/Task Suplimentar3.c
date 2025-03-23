@@ -1,150 +1,139 @@
-﻿//#define _CRT_SECURE_NO_WARNINGS
-//#include <stdlib.h>
-//#include <stdio.h>
-//
-//
-//struct Film {
-//	char* titlu;
-//	int nrActori;
-//	float durata;
-//	int nrRecenzii;
-//	float* note;
-//};
-//
-//struct Film initializare(char* titlu, int nrActori, float durata, int nrRecenzii, float* note) {
-//	struct Film f;
-//	f.titlu = (char*)malloc((strlen(titlu) + 1) * sizeof(char));
-//	strcpy(f.titlu, titlu);
-//	f.nrActori = nrActori;
-//	f.durata = durata;
-//	f.nrRecenzii = nrRecenzii;
-//	f.note = (float*)malloc(nrRecenzii * sizeof(float));
-//	for (int i = 0; i < nrRecenzii; i++) {
-//		f.note[i] = note[i];
-//	}
-//	return f;
-//}
-//
-//void afisareFilm(struct Film film) {
-//	printf("\nTitlu: %s\n", film.titlu);
-//	printf("Numar actori: %d\n", film.nrActori);
-//	printf("Durata: %.2f\n", film.durata);
-//	printf("Numar recenzii: %d\n", film.nrRecenzii);
-//	if (film.nrRecenzii > 0) {
-//		printf("Note din recenzii: ");
-//		for (int i = 0; i < film.nrRecenzii; i++) {
-//			printf("%.2f ", film.note[i]);
-//		}
-//		printf("\n");
-//	}
-//	else {
-//		printf("Nu exista recenzii disponibile.");
-//	}
-//}
-//
-//void afisareVectorFilme(struct Film* filme, int nrFilme) {
-//	for (int i = 0; i < nrFilme; i++) {
-//		afisareFilm(filme[i]);
-//		
-//	}
-//}
-//
-//struct Film citireFilm(FILE* file) {
-//	struct Film f;
-//	f.titlu = NULL;
-//	f.nrActori = 0;
-//	f.durata = 0;
-//	f.nrRecenzii = 0;
-//	f.note = NULL;
-//
-//	char buffer[100];
-//	char sep[2] = ",\n";
-//
-//	if (fgets(buffer, sizeof(buffer), file) == NULL) {
-//		return f; // Dacă nu mai sunt linii, returnăm un film "gol"
-//	}
-//
-//	char* aux = strtok(buffer, sep);
-//	if (aux == NULL) return f; // Verificăm dacă există titlul
-//
-//	f.titlu = (char*)malloc(strlen(aux) + 1);
-//	if (f.titlu == NULL) {
-//		printf("Eroare la alocarea memoriei pentru titlu!\n");
-//		exit(1);
-//	}
-//	strcpy(f.titlu, aux);
-//
-//	char* token = strtok(NULL, sep);
-//	if (token == NULL) return f;
-//	f.nrActori = atoi(token);
-//
-//	token = strtok(NULL, sep);
-//	if (token == NULL) return f;
-//	f.durata = atof(token);
-//
-//	token = strtok(NULL, sep);
-//	if (token == NULL) return f;
-//	f.nrRecenzii = atoi(token);
-//
-//	if (f.nrRecenzii > 0) {
-//		f.note = (float*)malloc(f.nrRecenzii * sizeof(float));
-//		if (f.note == NULL) {
-//			printf("Eroare la alocarea memoriei pentru note!\n");
-//			exit(1);
-//		}
-//		for (int i = 0; i < f.nrRecenzii; i++) {
-//			token = strtok(NULL, sep);
-//			if (token == NULL) {
-//				f.nrRecenzii = i;
-//				break;
-//			}
-//			f.note[i] = atof(token);
-//		}
-//	}
-//	else {
-//		f.note = NULL;
-//	}
-//
-//	return f;
-//}
-//
-//void adaugaFilmInVector(struct Film** filme, int* nrFilme, struct Film f) {
-//	struct Film* temp = (struct Film*)malloc((*nrFilme + 1) * sizeof(struct Film));
-//	for (int i = 0; i < *nrFilme; i++) {
-//		temp[i] = (*filme)[i];
-//	}
-//	temp[*nrFilme] = f;
-//	(*nrFilme)++;
-//	free(*filme);
-//	*filme = temp;
-//}
-//
-//
-//struct Film* citireVectorFilme(const char* numeFisier, int* nrFilme) {
-//	FILE* file = fopen(numeFisier, "r");
-//	if (!file) {
-//		printf("Eroare la deschiderea fisierului!\n");
-//		return NULL;
-//	}
-//
-//	struct Film* filme = NULL;
-//	*nrFilme = 0;
-//
-//	while (1) {
-//		struct Film f = citireFilm(file);
-//		if (f.titlu == NULL) break; 
-//
-//		adaugaFilmInVector(&filme, nrFilme, f);
-//	}
-//
-//	fclose(file);
-//	return filme;
-//}
-//
-//
-//int main() {
-//	int filme = 0;
-//	struct Film* filmeVector = citireVectorFilme("filme.txt", &filme);
-//	afisareVectorFilme(filmeVector, filme);
-//	return 0;
-//}
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Film {
+    int id;
+    char* titlu;
+    int nrActori;
+    float durata;
+    int nrRecenzii;
+    float* note;
+};
+
+typedef struct Film Film;
+
+void afisareFilm(Film film) {
+    printf("Id: %d\n", film.id);
+    printf("Titlu: %s\n", film.titlu);
+    printf("Numar actori: %d\n", film.nrActori);
+    printf("Durata: %.2f\n", film.durata);
+    printf("Numar recenzii: %d\n", film.nrRecenzii);
+    if (film.nrRecenzii > 0) {
+        printf("Note din recenzii: ");
+        for (int i = 0; i < film.nrRecenzii; i++) {
+            printf("%.2f ", film.note[i]);
+        }
+        printf("\n");
+    }
+    else {
+        printf("Nu exista recenzii disponibile.\n");
+    }
+}
+
+void afisareVectorFilme(Film* filme, int nrFilme) {
+    for (int i = 0; i < nrFilme; i++) {
+        afisareFilm(filme[i]);
+    }
+}
+
+void adaugareFilmInVector(Film** filme, int* nrFilme, Film filmNou) {
+    Film* aux = (Film*)malloc(sizeof(Film) * ((*nrFilme) + 1));
+    if (*filme) {
+        for (int i = 0; i < *nrFilme; i++) {
+            aux[i] = (*filme)[i];
+        }
+        free(*filme);
+    }
+    aux[*nrFilme] = filmNou;
+    *filme = aux;
+    (*nrFilme)++;
+}
+
+Film citireFilm(FILE* file) {
+    char buffer[100];
+    char sep[] = ",\n";
+    char* aux;
+
+    if (!fgets(buffer, sizeof(buffer), file)) {
+        return (Film) { 0 };
+    }
+
+    Film f;
+
+    aux = strtok(buffer, sep);
+    f.id = atoi(aux);
+
+    aux = strtok(NULL, sep);
+    f.titlu = malloc(strlen(aux) + 1);
+    if (f.titlu) strcpy(f.titlu, aux);
+
+
+    aux = strtok(NULL, sep);
+    f.nrActori = atoi(aux);
+
+    aux = strtok(NULL, sep);
+    f.durata = atof(aux);
+
+    aux = strtok(NULL, sep);
+    f.nrRecenzii = atoi(aux);
+
+    
+
+    f.note = NULL;
+    if (f.nrRecenzii > 0) {
+        f.note = (float*)malloc(f.nrRecenzii * sizeof(float));
+        if (f.note) {
+            for (int i = 0; i < f.nrRecenzii; i++) {
+                aux = strtok(NULL, sep);
+                if (!aux) {
+                    f.nrRecenzii = i; 
+                    break;
+                }
+                f.note[i] = atof(aux);
+            }
+        }
+    }
+
+    return f;
+}
+
+Film* citireVectorFilme(const char* numeFisier, int* nrFilmeCitite) {
+    FILE* file = fopen(numeFisier, "r");
+    if (!file) {
+        printf("Eroare la deschiderea fisierului!\n");
+        return NULL;
+    }
+
+    Film* filme = NULL;
+    Film temp;
+    while ((temp = citireFilm(file)).titlu != NULL) {
+        adaugareFilmInVector(&filme, nrFilmeCitite, temp);
+    }
+
+    fclose(file);
+    return filme;
+}
+
+void dezalocareVector(Film** vector, int* nrFilme) {
+    for (int i = 0; i < *nrFilme; i++) {
+        free((*vector)[i].titlu);
+        free((*vector)[i].note);
+    }
+    free(*vector);
+    *vector = NULL;
+    *nrFilme = 0;
+}
+
+int main() {
+    int nrFilme = 0;
+    Film* filme = citireVectorFilme("filme.txt", &nrFilme);
+
+    if (filme) {
+        afisareVectorFilme(filme, nrFilme);
+        dezalocareVector(&filme, &nrFilme);
+    }
+
+    return 0;
+}

@@ -51,7 +51,7 @@
 //    char* aux;
 //
 //    if (!fgets(buffer, 100, file)) {
-//        Masina m = { 0 };  // Return an empty struct if reading fails
+//        Masina m = { 0 };
 //        return m;
 //    }
 //
@@ -61,17 +61,15 @@
 //    m.nrUsi = atoi(strtok(NULL, sep));
 //    m.pret = atof(strtok(NULL, sep));
 //
-//    // Model
+//
 //    aux = strtok(NULL, sep);
 //    m.model = malloc(strlen(aux) + 1);
 //    if (m.model) strcpy(m.model, aux);
 //
-//    // Nume șofer
 //    aux = strtok(NULL, sep);
 //    m.numeSofer = malloc(strlen(aux) + 1);
 //    if (m.numeSofer) strcpy(m.numeSofer, aux);
 //
-//    // Serie
 //    m.serie = strtok(NULL, sep)[0];
 //
 //    return m;
