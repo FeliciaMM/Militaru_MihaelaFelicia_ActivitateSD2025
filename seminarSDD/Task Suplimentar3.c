@@ -96,6 +96,15 @@ Film citireFilm(FILE* file) {
     return f;
 }
 
+void salvareInFisier(Film film, const char* numeFisierSalvare) {
+    FILE* file = fopen(numeFisierSalvare, "a");
+    fprintf(file,"%d, %s, %d, %.2f, %d",film.id, film.titlu, film.nrActori, film.durata, film.nrRecenzii);
+    for(int i = 0; i< film.nrRecenzii; i++){
+		fprintf(file, ", %.2f", film.note[i]);
+	}
+    fprintf(file, "\n");
+	fclose(file);
+}
 
 Film* citireVectorFilme(const char* numeFisier, int* nrFilmeCitite) {
     FILE* file = fopen(numeFisier, "r");
@@ -114,6 +123,18 @@ Film* citireVectorFilme(const char* numeFisier, int* nrFilmeCitite) {
     return filme;
 }
 
+void salvareVectorFilmeInFisier(Film* filme, int nrFilme, const char* numeFisierVector) {
+    FILE* file = fopen(numeFisierVector, "w");
+    for (int i = 0; i < nrFilme; i++) {
+        fprintf(file, "%d, %s, %d, %.2f, %d", filme[i].id, filme[i].titlu, filme[i].nrActori, filme[i].durata, filme[i].nrRecenzii);
+        for (int j = 0; j < filme[i].nrRecenzii; j++) {
+            fprintf(file, ", %.2f", filme[i].note[j]);
+        }
+        fprintf(file, "\n");
+    }
+    fclose(file);
+}
+
 void dezalocareVector(Film** vector, int* nrFilme) {
     for (int i = 0; i < *nrFilme; i++) {
         free((*vector)[i].titlu);
@@ -127,6 +148,9 @@ void dezalocareVector(Film** vector, int* nrFilme) {
 int main() {
     int nrFilme = 0;
     Film* filme = citireVectorFilme("filme.txt", &nrFilme);
+    salvareInFisier(filme[0], "filmeSalvate.txt");
+    salvareVectorFilmeInFisier(filme, 4, "filmeSalvateVector.txt");
+
 
     if (filme) {
         afisareVectorFilme(filme, nrFilme);
