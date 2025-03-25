@@ -27,7 +27,7 @@
     <ClCompile Include="Task suplimentar2.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
-    <ClCompile Include="seminar2.c">
+    <ClCompile Include="Seminar2.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
     <ClCompile Include="Seminar3.c">
@@ -38,6 +38,12 @@
     </ClCompile>
     <ClCompile Include="Seminar4.c">
       <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskSuplimentar5.c">
+      <Filter>Source Files\Task-uri suplimentare</Filter>
+    </ClCompile>
+    <ClCompile Include="SablonLSI.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
