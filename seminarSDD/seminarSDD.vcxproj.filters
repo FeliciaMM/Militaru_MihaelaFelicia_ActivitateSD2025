@@ -45,5 +45,8 @@
     <ClCompile Include="SablonLSI.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Seminar5.c">
+      <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
