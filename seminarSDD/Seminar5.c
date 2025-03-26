@@ -151,6 +151,7 @@ int main() {
 	Lista list;
 	list = citireLDMasiniDinFisier("masini.txt");
 	afisareListaMasini(list);
+
 	dezalocareLDMasini(&list);
 
 	return 0;
