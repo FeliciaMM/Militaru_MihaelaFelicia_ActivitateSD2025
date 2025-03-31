@@ -120,12 +120,33 @@ void dezalocare(List* list) {
 	list->last = NULL;
 }
 
+void stergeUnNod(List lista, int indexNod) {
+	Nod* temp = lista.first;
+	int count = 0;
+	while (count != indexNod) {
+		temp = temp->next;
+		count++;
+	}
+	Nod* sters = temp->next;
+	temp->next = sters->next;
+	sters->next->prev = sters->prev;
+	sters->next = NULL;
+	sters->prev = NULL;
+}
 
+void adaugaInListaCrescatorUsi(List list, Masina masinaNoua) {
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+}
 
 int main() {
 	List list;
 	list = citireListaDublaFisier("masini.txt");
 	afisareListaDubla(list);
+
+	stergeUnNod(list, 2);
+	printf("Lista noua:");
+	afisareListaDubla(list);
+
 	dezalocare(&list);
 
 	return 0;
