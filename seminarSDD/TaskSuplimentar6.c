@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,11 +29,18 @@ struct List {
 
 typedef struct List List;
 
+// Citire masina din fisier
 Masina citireMasinaDinFisier(FILE* file) {
 	char buffer[100];
 	char sep[3] = ",\n";
 	Masina m1;
-	fgets(buffer, 100, file);
+
+	if (fgets(buffer, 100, file) == NULL) {
+		m1.model = NULL;
+		m1.numeSofer = NULL;
+		return m1;
+	}
+
 	char* aux = strtok(buffer, sep);
 	m1.id = atoi(aux);
 
@@ -73,18 +80,41 @@ void afisareListaMasini(List list) {
 	}
 }
 
-void adaugaMasinaLista(List* list, Masina masinaNoua) {
-	Nod* nodNou = (Nod*)malloc(sizeof(Nod));
-	nodNou->info = masinaNoua;
-	nodNou->prev = list->last;
-	nodNou->next = NULL;
-	if (list->last) {
-		list->last->next = nodNou;
+void adaugaInListaCrescatorUsi(List* list, Masina masinaNoua) {
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+	nou->info = masinaNoua;
+	nou->next = NULL;
+	nou->prev = NULL;
+
+	if (list->first == NULL) {
+		list->first = nou;
+		list->last = nou;
+		return;
 	}
-	else {
-		list->first = nodNou;
+	Nod* temp = list->first;
+
+	while (temp != NULL && temp->info.nrUsi < masinaNoua.nrUsi) {
+		temp = temp->next;
 	}
-	list->last = nodNou;
+
+	if (temp == list->first) {
+		nou->next = list->first;
+		list->first->prev = nou;
+		list->first = nou;
+		return;
+	}
+
+	if (temp == NULL) {
+		nou->prev = list->last;
+		list->last->next = nou;
+		list->last = nou;
+		return;
+	}
+
+	nou->next = temp;
+	nou->prev = temp->prev;
+	temp->prev->next = nou;
+	temp->prev = nou;
 }
 
 List citireListaDublaFisier(const char* numeFisier) {
@@ -92,15 +122,20 @@ List citireListaDublaFisier(const char* numeFisier) {
 	List list;
 	list.first = NULL;
 	list.last = NULL;
+
 	while (!feof(f)) {
-		adaugaMasinaLista(&list, citireMasinaDinFisier(f));
+		Masina masinaNoua = citireMasinaDinFisier(f);
+		if (masinaNoua.model != NULL) { 
+			adaugaInListaCrescatorUsi(&list, masinaNoua);
+		}
 	}
+
 	fclose(f);
 	return list;
 }
 
 void afisareListaDubla(List list) {
-	Nod* temp = list.last;  
+	Nod* temp = list.last;
 	while (temp) {
 		afisare(temp->info);
 		temp = temp->prev;
@@ -120,35 +155,56 @@ void dezalocare(List* list) {
 	list->last = NULL;
 }
 
-void stergeUnNod(List lista, int indexNod) {
-	Nod* temp = lista.first;
+void stergeUnNod(List* lista, int indexNod) {
+	if (lista->first == NULL) {
+		printf("Lista este goala.\n");
+		return;
+	}
+
+	Nod* temp = lista->first;
 	int count = 0;
-	while (count != indexNod) {
+
+	while (temp != NULL && count < indexNod) {
 		temp = temp->next;
 		count++;
 	}
-	Nod* sters = temp->next;
-	temp->next = sters->next;
-	sters->next->prev = sters->prev;
-	sters->next = NULL;
-	sters->prev = NULL;
+	if (temp == NULL) {
+		printf("Indexul este in afara listei.\n");
+		return;
+	}
+
+	if (lista->first == lista->last) {
+		lista->first = NULL;
+		lista->last = NULL;
+	}
+	else if (temp == lista->first) {
+		lista->first = temp->next;
+		lista->first->prev = NULL;
+	}
+	else if (temp == lista->last) {
+		lista->last = temp->prev;
+		lista->last->next = NULL;
+	}
+	else {
+		temp->prev->next = temp->next;
+		temp->next->prev = temp->prev;
+	}
+	free(temp->info.numeSofer);
+	free(temp->info.model);
+	free(temp);
 }
 
-void adaugaInListaCrescatorUsi(List list, Masina masinaNoua) {
-	Nod* nou = (Nod*)malloc(sizeof(Nod));
-}
 
 int main() {
-	List list;
-	list = citireListaDublaFisier("masini.txt");
+	List list = citireListaDublaFisier("masini.txt");
 	afisareListaDubla(list);
 
-	stergeUnNod(list, 2);
-	printf("Lista noua:");
+	stergeUnNod(&list, 2);
+	printf("Lista dupa stergere:\n");
 	afisareListaDubla(list);
+
 
 	dezalocare(&list);
 
 	return 0;
 }
-
