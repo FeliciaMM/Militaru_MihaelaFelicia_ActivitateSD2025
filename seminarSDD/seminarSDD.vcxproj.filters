@@ -48,5 +48,11 @@
     <ClCompile Include="Seminar5.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
+    <ClCompile Include="Sablon5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskSuplimentar6.c">
+      <Filter>Source Files\Task-uri suplimentare</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
