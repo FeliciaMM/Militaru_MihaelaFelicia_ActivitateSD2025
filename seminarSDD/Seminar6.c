@@ -89,7 +89,7 @@ HashTable initializareHashTable(int dimensiune) {
 int calculeazaHash(const char* nume,int dimensiune) {
 	if (dimensiune == 0) return 0;
 	int s = 0;
-	for (int i = 0; i <= strlen(nume); i++) {
+	for (int i = 0; i < strlen(nume); i++) {
 		s += nume[i];
 		return s % dimensiune;
 	}
