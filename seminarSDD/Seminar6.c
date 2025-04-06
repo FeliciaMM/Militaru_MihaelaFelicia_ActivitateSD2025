@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -58,7 +58,7 @@ void afisareMasina(Masina masina) {
 }
 
 void afisareListaMasini(Node* v) {
-	while (v!= NULL) {
+	while (v != NULL) {
 		afisareMasina(v->info);
 		v = v->next;
 	}
@@ -69,7 +69,7 @@ void adaugaMasinaInLista(Node* v, Masina masinaNoua) {
 	Node* nou = (Node*)malloc(sizeof(Node));
 	nou->info = masinaNoua;
 	nou->next = NULL;
-	while (v->next!= NULL) {
+	while (v->next != NULL) {
 		v = v->next;
 	}
 	v->next = nou;
@@ -79,14 +79,14 @@ void adaugaMasinaInLista(Node* v, Masina masinaNoua) {
 HashTable initializareHashTable(int dimensiune) {
 	HashTable ht;
 	ht.dim = dimensiune;
-	ht.v = (Node**)malloc(sizeof(Node*)*dimensiune);
+	ht.v = (Node**)malloc(sizeof(Node*) * dimensiune);
 	for (int i = 0; i < dimensiune; i++) {
 		ht.v[i] = NULL;
 	}
 	return ht;
 }
 
-int calculeazaHash(const char* nume,int dimensiune) {
+int calculeazaHash(const char* nume, int dimensiune) {
 	if (dimensiune == 0) return 0;
 	int s = 0;
 	for (int i = 0; i < strlen(nume); i++) {
@@ -120,10 +120,13 @@ HashTable citireMasiniDinFisier(const char* numeFisier, int dimensiune) {
 }
 
 void afisareTabelaDeMasini(HashTable ht) {
-	//sunt afisate toate masinile cu evidentierea clusterelor realizate
+	for (int i = 0; i < ht.dim; i++) {
+		printf("Cluster %d:\n", i);
+		afisareListaMasini(ht.v[i]);
+	}
 }
 
-void dezalocareTabelaDeMasini(HashTable *ht) {
+void dezalocareTabelaDeMasini(HashTable* ht) {
 	//sunt dezalocate toate masinile din tabela de dispersie
 }
 
@@ -143,6 +146,7 @@ Masina getMasinaDupaCheie(HashTable ht /*valoarea pentru masina cautata*/) {
 
 int main() {
 	HashTable ht = citireMasiniDinFisier("masini.txt", 10);
+	afisareTabelaDeMasini(ht);
 
 	return 0;
 }

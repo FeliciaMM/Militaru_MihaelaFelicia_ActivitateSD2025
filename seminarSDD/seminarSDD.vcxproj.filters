@@ -57,5 +57,8 @@
     <ClCompile Include="Seminar6.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
+    <ClCompile Include="TaskSup-HashTable.c">
+      <Filter>Source Files\Task-uri suplimentare</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
