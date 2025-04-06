@@ -1,0 +1,7 @@
+1,1971,Bucharest Grand Hotel,2,1995,2010
+2,1997,Palatul Parlamentului,1,2018
+3,1911,Palatul Cercului Militar National,3,1990,2000,2015
+4,1888,Palatul Cotroceni,0
+5,1948,Muzeul National de Arta,2,2012,2020
+6,1889,Ateneul Roman,3,1930,1999,2010
+7,1936,Arcul de Triumf,2,1980,2000
