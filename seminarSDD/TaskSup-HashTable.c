@@ -62,13 +62,13 @@ Cladire citireCladireaDinFisier(FILE* file) {
 }
 
 void afisareCladire(Cladire cladire) {
-    printf("Id: %d\n", cladire.id);
+    printf("\nId: %d\n", cladire.id);
     printf("An Constructie: %d\n", cladire.anConstructie);
     printf("Numele cladirii: %s\n", cladire.nume);
     printf("Numar renovari: %d\n", cladire.nrRenovari);
     printf("Renovarile au avut loc in anii:\n ");
     for (int i = 0; i < cladire.nrRenovari; i++) {
-        printf("%d", cladire.anulRenovarii[i]);
+        printf("%d\n", cladire.anulRenovarii[i]);
     }
 }
 
@@ -101,27 +101,75 @@ HashTable initializareHashTable(int dimensiune) {
 }
 
 int functiaHash(int anulConstructiei,int dimensiune) {
-    int suma = 0;
-    while (anulConstructiei>0) {
-        suma += anulConstructiei/10;
-    }
-    return suma % dimensiune;
+    return anulConstructiei % dimensiune;
 }
 
 void inserareCladireInTabela(HashTable hash, Cladire cladire) {
     int pozitie = functiaHash(cladire.nume, hash.dim);
+    if (hash.tabela[pozitie] == NULL) {
+        hash.tabela[pozitie] = (Node*)malloc(sizeof(Node));
+        hash.tabela[pozitie]->info = cladire;
+        hash.tabela[pozitie]->next = NULL;
+    }
+    else {
+        adaugaCladiriInLista(hash.tabela[pozitie], cladire);
+    }
 }
 
-HashTable citireCladiriDinFisier(const char* numeFisier, int dimesniune) {
+HashTable citireCladiriDinFisier(const char* numeFisier,int dimesniune) {
+    HashTable hash = initializareHashTable(dimesniune);
     FILE* file = fopen(numeFisier, "r");
+    while (!feof(file)) {
+        Cladire cladire = citireCladireaDinFisier(file);
+        inserareCladireInTabela(hash, cladire);
+    }
+    fclose(file);
+    return hash;
+}
+
+void afisareTabelaMasini(HashTable ht) {
+    for (int i = 0; i < ht.dim; i++) {
+        if (ht.tabela[i] != NULL) {
+            printf("Masinile de pe pozitia %d sunt:\n", i);
+            afisareLista(ht.tabela[i]);
+        }else{
+            printf("\nPe poz %d nu avem masini",i);
+        }
+    }
+}
+
+void dezalocareLista(Node** cap) {
+    Node* p = *cap;
+    while (p) {
+        Node* temp = p;
+        p = p->next;
+        if (temp->info.nume) {
+            free(temp->info.nume);
+        }
+        if (temp->info.anulRenovarii) {
+            free(temp->info.anulRenovarii);
+        }
+        free(temp);
+    }
+    *cap = NULL;
+}
+
+void dezalocare(HashTable *ht) {
+    for (int i = 0; i < ht->dim; i++) {
+        dezalocareLista(&(ht->tabela[i]));
+    }
+    free(ht->tabela);
+    ht->tabela = NULL;
+    ht->dim = 0;
 }
 
 
 
-int main() {
-    HashTable ht = initializareHashTable(7);
-    /*Cladire c = citireCladireaDinFisier("cladiri.txt");*/
-   
-
+int main(){
+    HashTable ht = citireCladiriDinFisier("cladiri.txt",7);
+    afisareTabelaMasini(ht);
+    int anCluster = 1999;
+    printf("\nClusterul cladirilor construite in anul %d: \n", anCluster);
+    dezalocare(&ht);
     return 0;
 }
