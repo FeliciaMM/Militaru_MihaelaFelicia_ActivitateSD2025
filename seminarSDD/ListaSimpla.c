@@ -22,9 +22,6 @@ Tablou citireTablouDinFisier(FILE* file) {
 	char buffer[100];
 	char sep[3] = ",\n";
 	Tablou t;
-	t.pictor = NULL;
-	t.ani = NULL;
-	t.nrReabilitari = 0;
 
 	if (fgets(buffer, 100, file)) {
 		char* aux = strtok(buffer, sep);
@@ -32,12 +29,10 @@ Tablou citireTablouDinFisier(FILE* file) {
 		t.id = atoi(aux);
 
 		aux = strtok(NULL, sep);
-		if (!aux) return t;
 		t.pictor = (char*)malloc(strlen(aux) + 1);
 		strcpy(t.pictor, aux);
 
 		aux = strtok(NULL, sep);
-		if (!aux) return t;
 		t.nrReabilitari = atoi(aux);
 
 		if (t.nrReabilitari > 0) {
@@ -57,7 +52,7 @@ Tablou citireTablouDinFisier(FILE* file) {
 void afisareTablou(Tablou t){
 	printf("\nId: %d\n", t.id);
 	printf("Numele pictorului: %s\n", t.pictor);
-	printf("\nNr reabilitari: %d\n", t.nrReabilitari);
+	printf("Nr reabilitari: %d\n", t.nrReabilitari);
 	printf("Reabilitarile au avut loc in anii:\n ");
 	for (int i = 0; i < t.nrReabilitari; i++) {
 	    printf("%d\n", t.ani[i]);
@@ -99,11 +94,15 @@ Node* citireListaDinFisier(const char* numeFisier) {
 	FILE* file = fopen(numeFisier, "r");
 	if (file) {
 		while (!feof(file)) {
-			adaugareLaFinal(&cap, citireTablouDinFisier(file));
+			adaugareLaInceput(&cap, citireTablouDinFisier(file));
 		}
 	}
 	fclose(file);
 	return cap;
+}
+
+void dezalocare(Node* cap) {
+
 }
 
 int main() {
