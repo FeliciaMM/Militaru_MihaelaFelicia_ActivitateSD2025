@@ -127,7 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ListaSimpla.c" />
+    <ClCompile Include="DLL TestPrep.c" />
+    <ClCompile Include="ListaSimpla TestPrep.c" />
     <ClCompile Include="Sablon5.c" />
     <ClCompile Include="Seminar2.c" />
     <ClCompile Include="Seminar3.c" />

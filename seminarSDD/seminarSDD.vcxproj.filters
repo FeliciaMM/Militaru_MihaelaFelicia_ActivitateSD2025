@@ -57,10 +57,13 @@
     <ClCompile Include="Task Suplimentar7.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
-    <ClCompile Include="ListaSimpla.c">
+    <ClCompile Include="ListaSimpla TestPrep.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SLL TestPrep - exercitii.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DLL TestPrep.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
