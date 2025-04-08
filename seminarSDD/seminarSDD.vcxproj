@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DLL TestPrep.c" />
+    <ClCompile Include="HT test prep.c" />
     <ClCompile Include="ListaSimpla TestPrep.c" />
     <ClCompile Include="Sablon5.c" />
     <ClCompile Include="Seminar2.c" />

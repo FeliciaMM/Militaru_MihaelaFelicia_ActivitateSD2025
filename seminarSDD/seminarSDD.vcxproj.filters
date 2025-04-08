@@ -66,5 +66,8 @@
     <ClCompile Include="DLL TestPrep.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HT test prep.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
