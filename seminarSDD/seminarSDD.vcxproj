@@ -136,6 +136,7 @@
     <ClCompile Include="Seminar4.c" />
     <ClCompile Include="Seminar5.c" />
     <ClCompile Include="Seminar6.c" />
+    <ClCompile Include="Seminar7.c" />
     <ClCompile Include="SLL TestPrep - exercitii.c" />
     <ClCompile Include="Task suplimentar1.c" />
     <ClCompile Include="Task suplimentar2.c" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Task Suplimentar7.c" />
     <ClCompile Include="TaskSuplimentar5.c" />
     <ClCompile Include="TaskSuplimentar6.c" />
+    <ClCompile Include="TestPrepHT2.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
