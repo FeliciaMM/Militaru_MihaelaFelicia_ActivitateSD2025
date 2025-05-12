@@ -72,11 +72,17 @@
     <ClCompile Include="TestPrepHT2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar7.c">
-      <Filter>Source Files\Seminare</Filter>
-    </ClCompile>
     <ClCompile Include="Seminar8.c">
       <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
+    <ClCompile Include="Seminar9.c">
+      <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
+    <ClCompile Include="Heap - sablon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sablon Arbore Binar.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

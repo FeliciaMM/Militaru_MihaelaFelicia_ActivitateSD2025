@@ -128,16 +128,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DLL TestPrep.c" />
+    <ClCompile Include="Heap - sablon.c" />
     <ClCompile Include="HT test prep.c" />
     <ClCompile Include="ListaSimpla TestPrep.c" />
+    <ClCompile Include="Sablon Arbore Binar.c" />
     <ClCompile Include="Sablon5.c" />
     <ClCompile Include="Seminar2.c" />
     <ClCompile Include="Seminar3.c" />
     <ClCompile Include="Seminar4.c" />
     <ClCompile Include="Seminar5.c" />
     <ClCompile Include="Seminar6.c" />
-    <ClCompile Include="Seminar7.c" />
     <ClCompile Include="Seminar8.c" />
+    <ClCompile Include="Seminar9.c" />
     <ClCompile Include="SLL TestPrep - exercitii.c" />
     <ClCompile Include="Task suplimentar1.c" />
     <ClCompile Include="Task suplimentar2.c" />
