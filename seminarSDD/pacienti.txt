@@ -1,0 +1,11 @@
+Ana,20,1
+Ion,30,5
+Mihai,29,3
+Alina,16,7
+Dan,50,8
+Ioana,30,2
+Daria,45,6
+Cristian,70,4
+Mihail,57,9
+Stan,90,10
+Iulia,29,11

@@ -87,5 +87,8 @@
     <ClCompile Include="TaskSuplimentar10.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
+    <ClCompile Include="TaskSuplimentar9.c">
+      <Filter>Source Files\Task-uri suplimentare</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

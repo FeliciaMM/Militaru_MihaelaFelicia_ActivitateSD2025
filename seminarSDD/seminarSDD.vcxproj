@@ -148,6 +148,7 @@
     <ClCompile Include="TaskSuplimentar10.c" />
     <ClCompile Include="TaskSuplimentar5.c" />
     <ClCompile Include="TaskSuplimentar6.c" />
+    <ClCompile Include="TaskSuplimentar9.c" />
     <ClCompile Include="TestPrepHT2.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
