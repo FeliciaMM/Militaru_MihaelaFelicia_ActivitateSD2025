@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+//preordine - rsd
+//inordine - srd
+//postordine - sdr
+
 struct Avion {
 	char* model;
 	int nrLocuri;
@@ -86,17 +91,71 @@ Node* inserareAvionInArbore(Node* rad, Avion a) {
 	}
 	else {
 		Node* nou = (Node*)malloc(sizeof(Node));
-		nou->info;
+		nou->info = a;
 		nou->r = NULL;
 		nou->l = NULL;
 		return nou;
 	}
 }
 
+Node* citireArboreDinFisier(const char* numeFisier) {
+	Node* rad = NULL;
+	FILE* file = fopen(numeFisier, "r");
+	if (file) {
+		while (!feof(file)) {
+			rad = inserareAvionInArbore(rad, citireAvionDinFisier(file));
+			
+		}
+	}
+	fclose(file);
+	return rad;
+}
+
+void afisareArbore(Node* rad) {
+	if (rad) {
+		//le schimbam in functie de ordinea in care dorim sa afisam
+		afisareArbore(rad->l);
+		afisareAvion(rad->info);
+		afisareArbore(rad->r);
+	}
+}
+
+Avion cautareAvionInArboreDupaNrLocuri(Node* rad, int nrLocuri) {
+	if (rad) {
+		if (rad->info.nrLocuri == nrLocuri) {
+			Avion a = initializare(rad->info.model, rad->info.nrLocuri, rad->info.nrLocuriOcupate, rad->info.preturiBilete);//deepcopy
+			return a;
+		}
+		else if (rad->info.nrLocuri > nrLocuri) {
+			return cautareAvionInArboreDupaNrLocuri(rad->l, nrLocuri);
+		}
+		else {
+			return cautareAvionInArboreDupaNrLocuri(rad->r, nrLocuri);
+		}
+	}
+	else {
+		return initializare("", -1, -1, NULL);
+	}
+}
+
+void dezalocare(Node** rad) {
+	if ((*rad) != NULL) {
+		dezalocare(&((*rad)->l));
+		dezalocare(&((*rad)->r));
+		free((*rad)->info.model);
+		free((*rad)->info.preturiBilete);
+		free(*rad);
+		*rad = NULL;
+	}
+}
 
 void main() {
 	Avion a = initializare("A330", 300, 3, (float[]) { 10, 20, 30 });
 	afisareAvion(a);
+
+
+	Node* arbore = citireArboreDinFisier("avioane.txt");
+	afisareArbore(arbore);
 
 	//FILE* file = fopen("avioane.txt", "r");
 	//if (file) {
@@ -116,12 +175,10 @@ void main() {
 	//}
 	//fclose(file);
 
-
-	Node* rad = NULL;
-	FILE* file = fopen("avioane.txt", "r");
-	if (file) {
-		while (!feof(file)) {
-			rad = inserareAvionInArbore(rad, citireAvionDinFisier(file));
-		}
-	}
+	printf("\nAvion vautua: ");
+	Avion cautare = cautareAvionInArboreDupaNrLocuri(arbore, 200);
+	afisareAvion(cautare);
+	free(cautare.model);
+	free(cautare.preturiBilete);
+	dezalocare(&arbore);
 }

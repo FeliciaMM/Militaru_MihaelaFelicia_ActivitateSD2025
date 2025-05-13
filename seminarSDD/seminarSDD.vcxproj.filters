@@ -81,7 +81,7 @@
     <ClCompile Include="Heap - sablon.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sablon Arbore Binar.c">
+    <ClCompile Include="Aprofundare Arbore Binar.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
