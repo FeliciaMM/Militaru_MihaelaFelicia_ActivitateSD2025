@@ -199,17 +199,17 @@ Masina getMasinaByID(/*stiva sau coada de masini*/int id);
 
 float calculeazaPretTotal(ListaDubla* coada) {
 	float suma = 0;
-	ListaDubla* nou;
-	nou->first = NULL;
-	nou->last = NULL;
+	ListaDubla nou;
+	nou.first = NULL;
+	nou.last = NULL;
 	while ((*coada).first) {
 		Masina m = dequeue(coada);
 		suma += m.pret;
-		enqueue(nou,m);
+		enqueue(&nou,m);
 
 	}
-	coada->first = nou->first;
-	coada->last = nou->last;
+	coada->first = nou.first;
+	coada->last = nou.last;
 
 	return suma;
 }
@@ -224,6 +224,8 @@ int main() {
 	ListaDubla coada = citireCoadaDeMasiniDinFisier("masini.txt");
 	Masina md = dequeue(&coada);
 	afisareMasina(md);
+
+	printf("Suma preturi: %.2f", calculeazaPretTotal(&coada));
 	dezalocareCoadaDeMasini(&coada);
 	/*dezalocareStivaDeMasini(&stiva);*/
 	return 0;
