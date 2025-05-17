@@ -27,22 +27,22 @@
     <ClCompile Include="Task suplimentar2.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar2.c">
+    <ClCompile Include="Seminar2-vecctor.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar3.c">
+    <ClCompile Include="Seminar3-fisier.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
     <ClCompile Include="Task Suplimentar3.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar4.c">
+    <ClCompile Include="Seminar4-ls.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
     <ClCompile Include="TaskSuplimentar5.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar5.c">
+    <ClCompile Include="Seminar5-ld.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
     <ClCompile Include="Sablon5.c">
@@ -51,7 +51,7 @@
     <ClCompile Include="TaskSuplimentar6.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar6.c">
+    <ClCompile Include="Seminar6-ht.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
     <ClCompile Include="Task Suplimentar8.c">
@@ -72,10 +72,10 @@
     <ClCompile Include="TestPrepHT2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar8.c">
+    <ClCompile Include="Seminar7-heap.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar9.c">
+    <ClCompile Include="Seminar8-abc.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
     <ClCompile Include="Heap - sablon.c">
@@ -90,7 +90,10 @@
     <ClCompile Include="TaskSuplimentar9.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar10.c">
+    <ClCompile Include="Seminar10-stiva si coada.c">
+      <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
+    <ClCompile Include="Seminar9-avl.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
   </ItemGroup>
