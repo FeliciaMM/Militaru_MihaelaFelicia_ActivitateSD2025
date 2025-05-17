@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Seminare">
       <UniqueIdentifier>{2ff0becc-443b-4492-898d-ddec5a15d107}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Aprofundare test">
+      <UniqueIdentifier>{6d2d17f0-f9b4-4e97-a50c-f45264b6ff1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Task suplimentar1.c">
@@ -45,9 +48,6 @@
     <ClCompile Include="Seminar5-ld.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
-    <ClCompile Include="Sablon5.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TaskSuplimentar6.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
@@ -57,32 +57,11 @@
     <ClCompile Include="Task Suplimentar8.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
-    <ClCompile Include="ListaSimpla TestPrep.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SLL TestPrep - exercitii.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DLL TestPrep.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HT test prep.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestPrepHT2.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Seminar7-heap.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
     <ClCompile Include="Seminar8-abc.c">
       <Filter>Source Files\Seminare</Filter>
-    </ClCompile>
-    <ClCompile Include="Heap - sablon.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Aprofundare Arbore Binar.c">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TaskSuplimentar10.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
@@ -95,6 +74,33 @@
     </ClCompile>
     <ClCompile Include="Seminar9-avl.c">
       <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
+    <ClCompile Include="Aprofundare Arbore Binar.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="DLL TestPrep.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="Heap - sablon.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="HT test prep.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaSimpla TestPrep.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="Sablon5.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="SLL TestPrep - exercitii.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="TestPrepHT2.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="Heap - aprofundare.c">
+      <Filter>Source Files\Aprofundare test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
