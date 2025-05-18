@@ -119,10 +119,50 @@ void afiseazaHeap(Heap heap) {
 	}
 }
 
+//verificam lungimea comparaiv cu nr de elemente
+void afiseazaHeapAscuns(Heap heap) {
+	for (int i = heap.nrElemente; i < heap.lungime; i++) {
+		afisareAvion(heap.vector[i]);
+	}
+}
+
+//vom intersecta numarul de sus cu ultimul de sus si il extragem
+// //ascundem nr extras si micsoram nr de elemente
+//facem interschimbari pana cand totul ajunge la loc
+//MAX HEAP SORT - atunci cand elementele coase din heap sunt scoase ordonate crescator
+//descresctor cu MIN
+Avion extrageAvionCuAscundere(Heap* heap) {
+	if (heap->nrElemente > 0) {
+		Avion aux = heap->vector[0];
+		heap->vector[0] = heap->vector[heap->nrElemente - 1];
+		heap->vector[heap->nrElemente - 1] = aux;
+		heap->nrElemente--;
+		for (int i = (heap->nrElemente - 2) / 2; i >= 0; i--) {
+			filtrareHeap(*heap, i);
+		}
+		return aux;//shallow copy
+	}
+}
+
+void dezalocareHeap(Heap* heap) {
+	for (int i = 0; i < heap->lungime; i++) {
+		free(heap->vector[i].nume);
+		free(heap->vector[i].pretBilet);
+	}
+	free(heap->vector);
+	heap->vector = NULL;
+	heap->lungime = 0;
+	heap->nrElemente = 0;
+}
 
 int main() {
 	Heap heap = citireAvioaneDinFiiser("avioane.txt");
 	afiseazaHeap(heap);
-
+	printf("\n------Masini extrase------\n");
+	afisareAvion(extrageAvionCuAscundere(&heap));
+	afisareAvion(extrageAvionCuAscundere(&heap));
+	printf("\n------Masini ascunse------\n");
+	afiseazaHeapAscuns(heap);
+	dezalocareHeap(&heap);
 	return 0;
 }
