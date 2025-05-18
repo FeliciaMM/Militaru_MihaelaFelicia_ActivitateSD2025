@@ -97,7 +97,7 @@ void filtrareHeap(Heap heap, int poz) {
 
 Heap citireAvioaneDinFiiser(char* numeFisier) {
 	FILE* file = fopen(numeFisier, "r");
-	Heap heap = initializare(10);
+	Heap heap = initializare(4);
 	if (file) {
 		while (!feof(file)) {
 			heap.vector[heap.nrElemente++] = citireAvionDinFisier(file);
@@ -121,8 +121,10 @@ void afiseazaHeap(Heap heap) {
 
 //verificam lungimea comparaiv cu nr de elemente
 void afiseazaHeapAscuns(Heap heap) {
+	//AICI ARE LOC UN BUG (TO DO)
 	for (int i = heap.nrElemente; i < heap.lungime; i++) {
 		afisareAvion(heap.vector[i]);
+		
 	}
 }
 
@@ -161,7 +163,7 @@ int main() {
 	printf("\n------Masini extrase------\n");
 	afisareAvion(extrageAvionCuAscundere(&heap));
 	afisareAvion(extrageAvionCuAscundere(&heap));
-	printf("\n------Masini ascunse------\n");
+	printf("\n------Avioane ascunse------\n");
 	afiseazaHeapAscuns(heap);
 	dezalocareHeap(&heap);
 	return 0;
