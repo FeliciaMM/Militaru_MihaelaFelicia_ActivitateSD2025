@@ -1,0 +1,10 @@
+7,Ana I,2
+6,Cristian F,3
+9,Iulian D,3
+10,Mihail I,2
+1,Cristiana L,1
+5,Darius M,2
+11,Ana Maria S,3
+12,Cristi G,2
+3,Adriana S,4
+4,Mihai C,2

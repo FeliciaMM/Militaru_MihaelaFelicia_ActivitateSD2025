@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClCompile Include="DLL TestPrep.c" />
     <ClCompile Include="Heap - aprofundare.c" />
-    <ClCompile Include="Heap - sablon.c" />
+    <ClCompile Include="Heap aprofundare 2.c" />
     <ClCompile Include="HT test prep.c" />
     <ClCompile Include="ListaSimpla TestPrep.c" />
     <ClCompile Include="Aprofundare Arbore Binar.c" />
