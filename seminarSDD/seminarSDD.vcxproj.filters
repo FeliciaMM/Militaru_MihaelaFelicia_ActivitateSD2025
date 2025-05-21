@@ -102,5 +102,11 @@
     <ClCompile Include="Heap aprofundare 2.c">
       <Filter>Source Files\Aprofundare test</Filter>
     </ClCompile>
+    <ClCompile Include="Aprofundare ABC 2.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
+    <ClCompile Include="Seminar11 - Grafuri.c">
+      <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

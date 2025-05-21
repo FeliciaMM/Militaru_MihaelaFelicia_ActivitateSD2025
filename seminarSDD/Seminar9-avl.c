@@ -3,24 +3,58 @@
 //#include <stdlib.h>
 //#include <string.h>
 //
-////trebuie sa folositi fisierul masini.txt
-////sau va creati un alt fisier cu alte date
-//
 //struct StructuraMasina {
 //	int id;
 //	int nrUsi;
 //	float pret;
 //	char* model;
-//	char* numeSofer; 
+//	char* numeSofer;
 //	unsigned char serie;
 //};
 //typedef struct StructuraMasina Masina;
 //
 ////creare structura pentru un nod dintr-un arbore binar de cautare
+//struct Nod
+//{
+//	Masina info;
+//	struct Nod* st;
+//	struct Nod* dr;
+//	int gradEchilibru;
+//};
+//typedef struct Nod Nod;
 //
-////SA IMPLEMENTEZE FELICIA CITIREA SA NU MAI FIE TUTA
+//Masina citireMasinaDinFisier(FILE* file) {
+//	char buffer[100];
+//	char sep[3] = ",\n";
+//	fgets(buffer, 100, file);
+//	char* aux;
+//	Masina m1;
+//	aux = strtok(buffer, sep);
+//	m1.id = atoi(aux);
+//	m1.nrUsi = atoi(strtok(NULL, sep));
+//	m1.pret = atof(strtok(NULL, sep));
+//	aux = strtok(NULL, sep);
+//	m1.model = malloc(strlen(aux) + 1);
+//	strcpy_s(m1.model, strlen(aux) + 1, aux);
 //
-////int calculeazaInaltimeArbore(/*arbore de masini*/) {
+//	aux = strtok(NULL, sep);
+//	m1.numeSofer = malloc(strlen(aux) + 1);
+//	strcpy_s(m1.numeSofer, strlen(aux) + 1, aux);
+//
+//	m1.serie = *strtok(NULL, sep);
+//	return m1;
+//}
+//
+//void afisareMasina(Masina masina) {
+//	printf("Id: %d\n", masina.id);
+//	printf("Nr. usi : %d\n", masina.nrUsi);
+//	printf("Pret: %.2f\n", masina.pret);
+//	printf("Model: %s\n", masina.model);
+//	printf("Nume sofer: %s\n", masina.numeSofer);
+//	printf("Serie: %c\n\n", masina.serie);
+//}
+//
+////int calculeazaInaltimeArbore(/arbore de masini/) {
 ////	//calculeaza inaltimea arborelui care este data de 
 ////	//lungimea maxima de la radacina pana la cel mai indepartat nod frunza
 ////	return 0;
@@ -29,16 +63,76 @@
 ////ALTE FUNCTII NECESARE:
 //// - aici veti adauga noile functii de care aveti nevoie.
 //
-//void adaugaMasinaInArboreEchilibrat(/*arborele de masini*/ Masina masinaNoua) {
-//	//adauga o noua masina pe care o primim ca parametru in arbore,
-//	//astfel incat sa respecte principiile de arbore binar de cautare ECHILIBRAT
-//	//dupa o anumita cheie pe care o decideti - poate fi ID
+//void rotireStanga(Nod** radacina) {
+//	Nod* aux = (*radacina)->dr;
+//	(*radacina)->dr = aux->st;
+//	aux->st = (*radacina);
+//	(*radacina) = aux;
+//	(*radacina)->gradEchilibru--;
 //}
 //
-//void* citireArboreDeMasiniDinFisier(const char* numeFisier) {
-//	//functia primeste numele fisierului, il deschide si citeste toate masinile din fisier
-//	//prin apelul repetat al functiei citireMasinaDinFisier()
-//	//ATENTIE - la final inchidem fisierul/stream-ul
+//void rotireDreapta(Nod** radacina) {
+//	Nod* aux = (*radacina)->st;
+//	(*radacina)->st = aux->dr;
+//	aux->dr = (*radacina);
+//	(*radacina) = aux;
+//	(*radacina)->gradEchilibru++;
+//}
+//
+//void adaugaMasinaInArboreEchilibrat(Nod** radacina, Masina masinaNoua) {
+//	if (*radacina) {
+//		if (masinaNoua.id < (*radacina)->info.id) {
+//			adaugaMasinaInArboreEchilibrat(&((*radacina)->st), masinaNoua);
+//			(*radacina)->gradEchilibru++;
+//
+//		}
+//		else {
+//			adaugaMasinaInArboreEchilibrat(&((*radacina)->dr), masinaNoua);
+//			(*radacina)->gradEchilibru--;
+//		}
+//		if ((*radacina)->gradEchilibru == 2) { //dezechilibru in stanga
+//			if ((*radacina)->st->gradEchilibru == 1) { //situatia simpla => rotire la dreapta
+//				rotireDreapta(radacina);
+//			}
+//			else { //rotire la stanga si dupa rotire la dreapta
+//				rotireStanga(&((*radacina)->st));
+//				rotireDreapta(radacina);
+//			}
+//		}
+//		if ((*radacina)->gradEchilibru == -2) {
+//			if ((*radacina)->dr->gradEchilibru == 1) {
+//				rotireDreapta(&((*radacina)->dr));
+//			}
+//			rotireStanga(radacina);
+//		}
+//	}
+//	else {
+//		Nod* nou = (Nod*)malloc(sizeof(Nod));
+//		nou->info = masinaNoua;
+//		nou->st = NULL;
+//		nou->dr = NULL;
+//		nou->gradEchilibru = 0;
+//		(*radacina) = nou;
+//	}
+//}
+//
+//Nod* citireArboreDeMasiniDinFisier(const char* numeFisier) {
+//	FILE* f = fopen(numeFisier, "r");
+//	Nod* arbore = NULL;
+//	while (!feof(f)) {
+//		Masina m = citireMasinaDinFisier(f);
+//		adaugaMasinaInArboreEchilibrat(&arbore, m);
+//	}
+//	fclose(f);
+//	return arbore;
+//}
+//
+//void afisarePreOrdine(Nod* arbore) {
+//	if (arbore) {
+//		afisareMasina(arbore->info);
+//		afisarePreOrdine(arbore->st);
+//		afisarePreOrdine(arbore->dr);
+//	}
 //}
 //
 //void afisareMasiniDinArbore(/*arbore de masini*/) {
@@ -65,6 +159,8 @@
 //
 //int main() {
 //
-//
+//	Nod* arbore = citireArboreDeMasiniDinFisier("masini.txt");
+//	afisarePreOrdine(arbore);
 //	return 0;
+//
 //}
