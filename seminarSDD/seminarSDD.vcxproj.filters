@@ -108,5 +108,8 @@
     <ClCompile Include="Seminar11 - Grafuri.c">
       <Filter>Source Files\Seminare</Filter>
     </ClCompile>
+    <ClCompile Include="Aprofundare ABC.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
