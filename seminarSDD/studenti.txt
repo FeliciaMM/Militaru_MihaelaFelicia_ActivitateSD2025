@@ -1,10 +1,12 @@
-7,Ana I,2
+4,Lucian C,1
+2,Ana I,2
+3,Ene M,3
 6,Cristian F,3
+5,Darius M,2
+8,Ina C,1
+7,Adriana S,4
 9,Iulian D,3
 10,Mihail I,2
 1,Cristiana L,1
-5,Darius M,2
 11,Ana Maria S,3
 12,Cristi G,2
-3,Adriana S,4
-4,Mihai C,2
