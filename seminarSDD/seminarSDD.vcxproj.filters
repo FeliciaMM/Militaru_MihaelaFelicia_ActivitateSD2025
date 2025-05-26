@@ -117,5 +117,8 @@
     <ClCompile Include="Task suplimentar AVL.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
+    <ClCompile Include="Aprofundare Max-Heap.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
