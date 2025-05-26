@@ -1,4 +1,4 @@
-Ana,20,1
+Ana,20,1,
 Ion,30,5
 Mihai,29,3
 Alina,16,7
