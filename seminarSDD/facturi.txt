@@ -1,0 +1,10 @@
+RomGaz,3,100,Ilie C,G
+AquaM,5,400,Mihai L,A
+RomGaz,2,50,Daniela L,G
+GazSRL,4,300,Marin P,G
+AquaUp,2,700,Popescu L,A
+LightSRL,4,500,Mariana M,L
+LightSRL,3,400,Mihail S,L
+AquaUp,1,1300,Marin L,A
+RomGaz,1,340,Mihaela L,G
+GazSRL,2,100,Marin A,G

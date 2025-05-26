@@ -120,5 +120,8 @@
     <ClCompile Include="Aprofundare Max-Heap.c">
       <Filter>Source Files\Aprofundare test</Filter>
     </ClCompile>
+    <ClCompile Include="Exemplu subiect heap.c">
+      <Filter>Source Files\Aprofundare test</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

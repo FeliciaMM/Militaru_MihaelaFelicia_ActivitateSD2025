@@ -132,6 +132,7 @@
     <ClCompile Include="Aprofundare AVL.c" />
     <ClCompile Include="Aprofundare Max-Heap.c" />
     <ClCompile Include="DLL TestPrep.c" />
+    <ClCompile Include="Exemplu subiect heap.c" />
     <ClCompile Include="Heap - aprofundare.c" />
     <ClCompile Include="Heap aprofundare 2.c" />
     <ClCompile Include="HT test prep.c" />
