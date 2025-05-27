@@ -1,0 +1,13 @@
+3,Bucuresti,1500
+1,Budapest,2000
+5,Bucuresti,5000
+9,Varna,1000
+7,Medgidia,3000
+8,New York,5000
+15,New York,6000
+11,New York,3000
+13,DC,1000
+20,Brasov,4000
+12,Giurgiu,5000
+18,Medgidia,1000
+10,Bucuresti,3000
