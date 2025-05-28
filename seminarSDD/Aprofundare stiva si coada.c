@@ -1,156 +1,185 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
-//
-// 
-// TO DO
-//struct Persoana {
-//	int id;
-//	char* nume;
-//	unsigned char serie;
-//	int nrNote;
-//	float* note;
-//};
-//
-////STACK - STIVA
-//typedef struct Persoana Persoana;
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//STACK - last in first out - lista simpla
+struct Fotografie {
+	int id;
+	char* oras;
+	float rezolutie;
+};
+
+typedef struct Fotografie Fotografie;
 //typedef struct Node Node;
 //
 //struct Node {
-//	Persoana info;
+//	Fotografie info;
 //	Node* next;
 //};
 //
-//Persoana citirePersoanaDinFisier(FILE* file) {
-//	char buffer[100];
-//	char sep[3] = ",\n";
-//	Persoana p;
-//	char* aux;
-//	fgets(buffer, 100, file);
-//	aux = strtok(buffer, sep);
-//	p.id = atoi(aux);
-//	aux = strtok(NULL, sep);
-//	p.nume = (char*)malloc(strlen(aux) + 1);
-//	strcpy(p.nume, aux);
-//	p.serie = *strtok(NULL, sep);
-//	aux = strtok(NULL, sep);
-//	p.nrNote = atoi(aux);
-//	p.note = NULL;
-//	if (p.nrNote > 0) {
-//		p.note = (float*)malloc(sizeof(float) * p.nrNote);
-//		for (int i = 0; i < p.nrNote; i++) {
-//			aux = strtok(NULL, sep);
-//			p.note[i] = atof(aux);
-//		}
-//	}
-//	return p;
-//}
-//
-//void afisarePersoana(Persoana p) {
-//	printf("Id: %d\n",p.id);
-//	printf("Nume: %s\n",p.nume);
-//	printf("Serie: %c\n",p.serie);
-//	printf("Numarul de note: %d\n",p.nrNote);
-//	for (int i = 0; i < p.nrNote; i++) {
-//		printf("%.2f ", p.note[i]);
-//	}
-//	printf("\n\n");
-//}
-//
-//void pushStack(Node** stack, Persoana p) {
+Fotografie citireFotografieFisier(FILE* file) {
+	char buffer[100];
+	char sep[3] = ",\n";
+	char* aux;
+	Fotografie f;
+	fgets(buffer, 100, file);
+	aux = strtok(buffer, sep);
+	f.id = atoi(aux);
+	aux = strtok(NULL, sep);
+	f.oras = (char*)malloc(strlen(aux) + 1);
+	strcpy(f.oras, aux);
+	aux = strtok(NULL, sep);
+	f.rezolutie = atof(aux);
+	return f;
+}
+
+void afiseazaFoto(Fotografie f) {
+	printf("Id: %d\n", f.id);
+	printf("Oras: %s\n", f.oras);
+	printf("Rezolutie: %.2f\n\n", f.rezolutie);
+}
+
+//void pushStack(Node** stack, Fotografie f) {
 //	Node* nou = (Node*)malloc(sizeof(Node));
-//	nou->info = p;
+//	nou->info.id = f.id;
+//	nou->info.rezolutie = f.rezolutie;
+//	nou->info.oras = (char*)malloc(strlen(f.oras) + 1);
+//	strcpy(nou->info.oras, f.oras);
 //	nou->next = (*stack);
 //	(*stack) = nou;
 //}
-//
-//Persoana popStack(Node** stack) {
-//	Persoana p;
+
+//Fotografie popStack(Node** stack) {
+//	Fotografie f;
 //	if (*stack) {
-//		Node* aux = *stack;
-//		p = aux->info;
+//		Node* aux = (*stack);
 //		(*stack) = aux->next;
 //		aux->next = NULL;
+//		f = aux->info;
 //		free(aux);
-//
 //	}
-//	return p;
+//	return f;
 //}
 //
 //Node* citireStackDinFisier(const char* numeFisier) {
-//	Node* stack = NULL;
 //	FILE* file = fopen(numeFisier, "r");
+//	Node* stack = NULL;
 //	while (!feof(file)) {
-//		Persoana p = citirePersoanaDinFisier(file);
-//		pushStack(&stack, p);
+//		Fotografie f = citireFotografieFisier(file);
+//		pushStack(&stack, f);
 //	}
 //	fclose(file);
 //	return stack;
 //}
 //
-//void afisareStack(Node* stack) {
-//	while (stack != NULL) {
-//		afisarePersoana(stack->info);
-//		stack = stack->next;
-//	}
-//}
-//
-////QUEUE - COADA
-//typedef struct NodeDublu NodeDublu;
-//
-//typedef struct ListaDubla ListaDubla;
-//
-//struct NodeDublu {
-//	Persoana info;
-//	NodeDublu* next;
-//	NodeDublu* prev;
-//};
-//
-//struct ListaDubla {
-//	NodeDublu* first;
-//	NodeDublu* last;
-//};
-//
-//void enqueue(ListaDubla* queue, Persoana p) {
-//	NodeDublu* nou = (NodeDublu*)malloc(sizeof(NodeDublu));
-//	nou->info = p;
-//	nou->next = NULL;
-//	nou->prev = queue->last;
-//	if (queue->last != NULL) {
-//		queue->last->next = nou;	
-//	}
-//	else {
-//		queue->first = nou;
-//	}
-//	queue->last = nou;
-//}
-//
-//Persoana dequeue(ListaDubla* queue) {
-//	Persoana p;
-//	if (queue->first != NULL) {
-//		p = queue->first->info;
-//		NodeDublu* aux = queue->first;
-//		if (queue->first->next != NULL) {
-//			queue->first = queue->first->next;
-//			queue->first->prev = NULL;
+//void afiseazaStack(Node* stack) {
+//	if (stack != NULL) {
+//		Node* aux = stack;
+//		while (aux != NULL) {
+//			afiseazaFoto(aux->info);
+//			aux = aux->next;
 //		}
-//		else {
-//			queue->first = NULL;
-//			queue->last = NULL;
-//		}
-//		free(aux);
+//	
 //	}
-//	return p;
-//
 //}
 //
-//
-//int main() {
-//	Node* stack = citireStackDinFisier("persoane.txt");
-//	afisareStack(stack);
-//	popStack(&stack);
-//	printf("STack dupa pop");
-//	afisareStack(stack);
-//	return 0;
+//void dezalocareStack(Node** stack) {
+//	while ((*stack) != NULL) {
+//		Fotografie f = popStack(stack);
+//		free(f.oras);
+//	}
+//	
 //}
+//
+//int sizeStack(Node* stack) {
+//	int size = 0;
+//	while (stack->next != NULL) {
+//		size++;
+//	}
+//	return size;
+//}
+
+//QUEUE - coada, first in firt out 
+typedef struct Node Node;
+struct Node {
+	Fotografie info;
+	Node* next;
+};
+
+void enqueue(Node** queue,Fotografie f) {
+	Node* nou = (Node*)malloc(sizeof(Node));
+	nou->next = NULL;
+	nou->info.id = f.id;
+	nou->info.oras = (char*)malloc(strlen(f.oras) + 1);
+	strcpy(nou->info.oras, f.oras);
+	nou->info.rezolutie = f.rezolutie;
+	if (*queue) {
+		Node* aux = (*queue);
+		while (aux->next != NULL) {
+			aux = aux->next;
+		}
+		aux->next = nou;
+	}
+	else {
+		(*queue) = nou;
+	}
+
+}
+
+Fotografie dequeue(Node** queue) {
+	Fotografie f;
+	if ((*queue)) {
+		Node* aux = (*queue);
+		f = aux->info;
+		(*queue) = aux->next;
+		aux->next = NULL;
+		aux->info.oras = NULL;
+		free(aux->info.oras);
+		free(aux);
+	}
+	return f;
+}
+
+
+Node* citireQueueDinFisie(const char* numeFisier) {
+	FILE* file = fopen(numeFisier, "r");
+	Node* queue = NULL;
+	while (!feof(file)) {
+		Fotografie f = citireFotografieFisier(file);
+		enqueue(&queue, f);
+	}
+	fclose(file);
+	return queue;
+}
+
+void afiseazaQueue(Node* queue) {
+	if(queue) {
+		Node* aux = queue;
+		while (aux != NULL) {
+			afiseazaFoto(aux->info);
+			aux = aux->next;
+		}
+	}
+}
+
+void dezalocareQueue(Node** queue) {
+	Node* aux = (*queue);
+	while (aux) {
+
+	}
+}
+
+int main() {
+	//Node* stack = citireStackDinFisier("fotografii.txt");
+	//afiseazaStack(stack);
+	//dezalocareStack(&stack);
+
+	Node* queue = citireQueueDinFisie("fotografii.txt");
+	afiseazaQueue(queue);
+	afiseazaFoto(dequeue(&queue));
+	dezalocareQueue(&queue);
+	afiseazaQueue(queue);
+
+	return 0;
+}
