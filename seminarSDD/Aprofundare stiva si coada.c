@@ -185,6 +185,17 @@
 //	}
 //	*queue = tempQueue; // înlocuim coada veche
 //}
+// 
+// 
+// Node* tempqueue =NULL;
+// while(*queue !=NULL;
+// Fotografie f = dequeue(queue);
+// if(f.id !=id){
+// enqueue(&tempqueue,f)}else{
+// free(f.oras);
+// }
+// }
+// *queue = tempQueue;
 //
 ////void removeByIdStack(Node** stack, int id) {
 ////	Node* auxStack = NULL;
