@@ -154,6 +154,7 @@
     <ClCompile Include="Seminar9-avl.c" />
     <ClCompile Include="SLL TestPrep - exercitii.c" />
     <ClCompile Include="Task suplimentar AVL.c" />
+    <ClCompile Include="Task suplimentar stiva si coada.c" />
     <ClCompile Include="Task suplimentar1.c" />
     <ClCompile Include="Task suplimentar2.c" />
     <ClCompile Include="Task Suplimentar3.c" />

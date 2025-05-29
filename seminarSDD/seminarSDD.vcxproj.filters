@@ -132,5 +132,8 @@
     <ClCompile Include="Exemplu test avl.c">
       <Filter>Source Files\Aprofundare test</Filter>
     </ClCompile>
+    <ClCompile Include="Task suplimentar stiva si coada.c">
+      <Filter>Source Files\Task-uri suplimentare</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
