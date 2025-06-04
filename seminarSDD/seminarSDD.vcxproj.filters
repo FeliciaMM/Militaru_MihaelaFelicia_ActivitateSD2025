@@ -135,5 +135,8 @@
     <ClCompile Include="Task suplimentar stiva si coada.c">
       <Filter>Source Files\Task-uri suplimentare</Filter>
     </ClCompile>
+    <ClCompile Include="Seminar 12 - parcurgere grafuri.c">
+      <Filter>Source Files\Seminare</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -142,6 +142,7 @@
     <ClCompile Include="ListaSimpla TestPrep.c" />
     <ClCompile Include="Aprofundare Arbore Binar.c" />
     <ClCompile Include="Sablon5.c" />
+    <ClCompile Include="Seminar 12 - parcurgere grafuri.c" />
     <ClCompile Include="Seminar10-stiva si coada.c" />
     <ClCompile Include="Seminar11 - Grafuri.c" />
     <ClCompile Include="Seminar2-vecctor.c" />
